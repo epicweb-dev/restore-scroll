@@ -48,41 +48,46 @@ page you choose. It does this by storing the scroll position of the element in
 session storage and then restoring it when the user navigates back to the page
 (very similar to how Remix handles scroll restoration for the `<body>`).
 
-This depends on Remix's `useBeforeUnload`, `useNavigation`, and `useLocation`
-hooks. There's probably an easy way we could make this support React Router in
-general. PRs welcome!
+This depends on React Router's `useBeforeUnload`, `useNavigation`, and
+`useLocation` hooks. It could probably be generalized to work with other
+routers. PRs welcome.
 
 ## Usage
 
 ```tsx
 import { ElementScrollRestoration } from '@epic-web/restore-scroll'
 
-// ... Stick this in your root component somewhere:
 return (
-	<html>
-		<body>
+	<div>
+		<ul id="christmas-gifts">
+			<li>🎁</li>
+			<li>🎂</li>
+			<li>🎉</li>
 			{/* ... */}
-			<ElementScrollRestoration elementQuery="[data-restore-scroll='true']" />
-			{/* ... */}
-		</body>
-	</html>
+		</ul>
+		<ElementScrollRestoration elementQuery="#christmas-gifts" />
+	</div>
 )
-```
-
-Then, for any element for which you wish to restore scroll position, simply add
-the `data-restore-scroll="true"` attribute:
-
-```tsx
-<ul data-restore-scroll="true">
-	<li>...</li>
-	<li>...</li>
-	<li>...</li>
-</ul>
 ```
 
 And that's it! Now when the user navigates away from the page and then back to
 it, the list will be scrolled to the position it was at when the user left the
 page.
+
+## Tips:
+
+1. This requires an inline script, so you'll need to pass a `nonce` if you're
+   using a Content Security Policy that requires this.
+2. Make certain to place the `ElementScrollRestoration` component _after_ the
+   element you want to restore the scroll position of. This is because the
+   component will render a `<script>` tag immediately after the element, and
+   that script will run immediately, so the element needs to be in the DOM
+   before the script runs.
+3. If you're computing the `id` and that value can change between navigations,
+   you may need to specify a `key` on `ElementScrollRestoration` to trigger the
+   inline script to be evaluated again and set the scroll position correctly.
+4. You'll want one of these components for each scrollable element you want to
+   restore the scroll position for.
 
 ## License
 
