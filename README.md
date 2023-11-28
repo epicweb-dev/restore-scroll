@@ -4,7 +4,7 @@
     Restore scroll position of elements on page navigation
   </strong>
   <p>
-    The <code><body></code> isn't the only thing that scrolls. When the user scrolls a list, then navigates back and forth, you may want to keep their scroll position where it was when they left. This library makes that easy.
+    The <code>&lt;body&gt;</code> isn't the only thing that scrolls. When the user scrolls a list, then navigates back and forth, you may want to keep their scroll position where it was when they left. This library makes that easy.
   </p>
 </div>
 
