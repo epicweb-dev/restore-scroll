@@ -1,0 +1,64 @@
+{
+  "name": "@epic-web/restore-scroll",
+  "version": "0.0.0-semantically-released",
+  "description": "Restore scroll position of elements on page navigation",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epicweb-dev/restore-scroll"
+  },
+  "bugs": {
+    "url": "https://github.com/epicweb-dev/restore-scroll/issues"
+  },
+  "homepage": "https://github.com/epicweb-dev/restore-scroll#readme",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write ."
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-router-dom": ">=6.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.39",
+    "prettier": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "tsx": "^4.3.0",
+    "typescript": "^5.3.2"
+  },
+  "prettier": {
+    "semi": false,
+    "useTabs": true,
+    "singleQuote": true,
+    "proseWrap": "always",
+    "overrides": [
+      {
+        "files": [
+          "**/*.json"
+        ],
+        "options": {
+          "useTabs": false
+        }
+      }
+    ]
+  },
+  "keywords": [],
+  "author": "Kent C. Dodds <me@kentcdodds.com> (https://kentcdodds.com/)",
+  "license": "MIT"
+}
