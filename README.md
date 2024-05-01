@@ -74,6 +74,11 @@ And that's it! Now when the user navigates away from the page and then back to
 it, the list will be scrolled to the position it was at when the user left the
 page.
 
+You can also specify horizontal scroll for elements like carousels:
+
+```tsx
+<ElementScrollRestoration elementQuery="#christmas-gifts" direction="horizontal" />
+```
 ## Tips:
 
 1. This requires an inline script, so you'll need to pass a `nonce` if you're
