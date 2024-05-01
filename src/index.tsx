@@ -6,7 +6,7 @@ type Direction = "vertical" | "horizontal";
 type ScrollAttribute = "scrollTop" | "scrollLeft";
 const DIRECTION: { [direction in Direction]: ScrollAttribute } = {
 	vertical: 'scrollTop',
-	horizontal:  'scrollLeft',
+	horizontal: 'scrollLeft',
 };
 
 export function ElementScrollRestoration({
