@@ -1,19 +1,22 @@
 import * as React from 'react'
 import { useCallback, useEffect } from 'react'
-import { useBeforeUnload, useLocation, useNavigation } from 'react-router-dom'
+import { useLocation, useNavigation } from 'react-router-dom'
 
-type Direction = "vertical" | "horizontal";
-type ScrollAttribute = "scrollTop" | "scrollLeft";
+type Direction = 'vertical' | 'horizontal'
+type ScrollAttribute = 'scrollTop' | 'scrollLeft'
 const DIRECTION: { [direction in Direction]: ScrollAttribute } = {
 	vertical: 'scrollTop',
 	horizontal: 'scrollLeft',
-};
+}
 
 export function ElementScrollRestoration({
 	elementQuery,
-	direction = "vertical",
+	direction = 'vertical',
 	...props
-}: { elementQuery: string; direction?: Direction } & React.HTMLProps<HTMLScriptElement>) {
+}: {
+	elementQuery: string
+	direction?: Direction
+} & React.HTMLProps<HTMLScriptElement>) {
 	const STORAGE_KEY = `position:${elementQuery}`
 	const navigation = useNavigation()
 	const location = useLocation()
@@ -61,11 +64,18 @@ export function ElementScrollRestoration({
 		}
 	}, [STORAGE_KEY, elementQuery, navigation.state, updatePositions])
 
-	useBeforeUnload(() => {
-		updatePositions()
-	})
+	useEffect(() => {
+		window.addEventListener('pagehide', updatePositions)
+		return () => {
+			window.removeEventListener('pagehide', updatePositions)
+		}
+	}, [updatePositions])
 
-	function restoreScroll(storageKey: string, elementQuery: string, scrollAttribute: ScrollAttribute) {
+	function restoreScroll(
+		storageKey: string,
+		elementQuery: string,
+		scrollAttribute: ScrollAttribute,
+	) {
 		const element = document.querySelector(elementQuery)
 		if (!element) {
 			console.warn(`Element not found: ${elementQuery}. Cannot restore scroll.`)
@@ -95,7 +105,9 @@ export function ElementScrollRestoration({
 			dangerouslySetInnerHTML={{
 				__html: `(${restoreScroll})(${JSON.stringify(
 					STORAGE_KEY,
-				)}, ${JSON.stringify(elementQuery)}, ${JSON.stringify(scrollAttribute)})`,
+				)}, ${JSON.stringify(elementQuery)}, ${JSON.stringify(
+					scrollAttribute,
+				)})`,
 			}}
 		/>
 	)
