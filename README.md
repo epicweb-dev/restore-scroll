@@ -48,9 +48,8 @@ page you choose. It does this by storing the scroll position of the element in
 session storage and then restoring it when the user navigates back to the page
 (very similar to how Remix handles scroll restoration for the `<body>`).
 
-This depends on React Router's `useBeforeUnload`, `useNavigation`, and
-`useLocation` hooks. It could probably be generalized to work with other
-routers. PRs welcome.
+This depends on React Router's `useNavigation` and `useLocation` hooks. It could
+probably be generalized to work with other routers. PRs welcome.
 
 ## Usage
 
