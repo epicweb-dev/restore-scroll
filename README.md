@@ -51,6 +51,12 @@ session storage and then restoring it when the user navigates back to the page
 This depends on React Router's `useNavigation` and `useLocation` hooks. It could
 probably be generalized to work with other routers. PRs welcome.
 
+## Demo
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/remix-run-remix-fczany?file=app%2Froutes%2F_index.tsx)
+
+Note: this demo is based on Remix, but will work with React Router as well.
+
 ## Usage
 
 ```tsx
