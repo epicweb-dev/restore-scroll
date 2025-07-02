@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useCallback, useEffect } from 'react'
-import { useLocation, useNavigation } from 'react-router-dom'
+import { useLocation, useNavigation } from 'react-router'
 
 type Direction = 'vertical' | 'horizontal'
 type ScrollAttribute = 'scrollTop' | 'scrollLeft'
