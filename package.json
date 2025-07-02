@@ -31,16 +31,16 @@
   },
   "peerDependencies": {
     "react": ">=18.0.0",
-    "react-router-dom": ">=6.4.0"
+    "react-router": ">=7.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.39",
-    "prettier": "^3.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0",
-    "tsx": "^4.3.0",
-    "typescript": "^5.3.2"
+    "@types/react": "^18.3.12",
+    "prettier": "^3.4.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router": "^7.6.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
   },
   "prettier": {
     "semi": false,

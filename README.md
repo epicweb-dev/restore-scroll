@@ -82,8 +82,12 @@ page.
 You can also specify horizontal scroll for elements like carousels:
 
 ```tsx
-<ElementScrollRestoration elementQuery="#christmas-gifts" direction="horizontal" />
+<ElementScrollRestoration
+	elementQuery="#christmas-gifts"
+	direction="horizontal"
+/>
 ```
+
 ## Tips:
 
 1. This requires an inline script, so you'll need to pass a `nonce` if you're
